@@ -1,0 +1,441 @@
+@import 'base';
+
+$base-opacity: .4;
+$hover-opacity: .6;
+$active-opacity: .6;
+
+$toolbar-width: 400px;
+
+.toolbar-bg {
+    position: fixed;
+    top: 0;
+    left: calc(50% - #{$toolbar-width/2});
+    width: 100%;
+    max-width: $toolbar-width;
+    height: 42px;
+    background-color: var(--toolbar-bg-color);
+    border: 1px solid var(--toolbar-shadow-color);
+    border-radius: 0 0 10px 10px;
+    border-top: none;
+    box-shadow: 0 0 6px var(--toolbar-shadow-color);
+    transition: opacity $anim-dur-med $anim-curve;
+}
+
+// put the quill toolbar inside our toolbar
+.ql-toolbar.ql-snow { left: calc(50% - #{$toolbar-width/2} + 5px); }
+
+.gpt-button { right: calc(50% - #{$toolbar-width/2} + 45px); }
+.settings-button { right: calc(50% - #{$toolbar-width/2} + 15px); }
+
+.gpt-menu-banner { right: calc(50% - #{$toolbar-width/2}); }
+.settings-menu-banner { right: calc(50% - #{$toolbar-width/2}); }
+
+.ql-toolbar.ql-snow {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    border: none;
+
+    & button {
+        color: var(--pure-black) !important;
+        opacity: $base-opacity;
+        font-size: 16px;
+        transition: opacity $anim-dur-med $anim-curve;
+        width: 24px;
+        cursor: pointer;
+
+        &:hover {
+            opacity: $hover-opacity;
+        }
+
+        &.ql-active {
+            opacity: $active-opacity;
+        }
+    }
+
+    & .ql-formats + .ql-formats { // spacing between groups
+        margin-left: 0;
+    }
+
+    & .ql-bold {
+        margin-left: 5px;
+    }
+
+    & .ql-bold, & .ql-italic, & .ql-underline {
+        margin-right: -2px;
+    }
+
+    & .ql-bold {
+        font-weight: bold;
+    }
+
+    & .ql-italic {
+        font-style: italic;
+        margin-left: -1px;
+    }
+    & .ql-underline {
+        text-decoration: underline;
+    }
+
+    & .ql-header {
+        font-size: 18.5px;
+        margin-top: -2px;
+
+        &::after {
+            font-weight: bold;
+            font-size: 60%;
+            top: 2px;
+            position: relative;
+        }
+    }
+
+    & .ql-header[value='1'] {
+        margin-right: 4px;
+
+        &::after {
+            content: "1";
+        }
+    }
+    & .ql-header[value='2'] {
+        margin-right: 3.5px;
+
+        &::after {
+            content: "2";
+        }
+    }
+    & .ql-header[value='3'] {
+        margin-right: -3.5px;
+        &::after {
+            content: "3";
+        }
+    }
+
+    & .ql-align, .ql-list { // fix align button icon style to match others
+        zoom: 104%;
+        margin-left: -3px;
+        margin-right: 2px;
+        margin-top: .5px;
+
+        &::before {
+            zoom: 96.1%; // correct tooltip zoom
+        }
+    }
+
+    & .ql-image {
+        margin-left: -8px;
+        margin-top: -.5px;
+        transform: scale(130%);
+    }
+
+    // disable selecting the text/icons in toolbar
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none; // Firefox
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-text-select: none;
+}
+
+.ql-snow .ql-stroke { // fix bullet/list icon colour (originally blue)
+    stroke: var(--pure-black) !important;
+}
+
+// extra toolbar buttons - try to match the toolbar styles
+.toolbar-extra {
+    z-index: 990; // to be over overlay
+    position: absolute;
+    top: 0;
+    
+    & img {
+        margin-top: 10.5px;
+        height: 19px;
+        opacity: $base-opacity;
+        transition: opacity $anim-dur-med $anim-curve;
+
+        &:hover {
+            opacity: $hover-opacity;
+            cursor: pointer;
+        }
+    }
+
+    &.settings-button-active {
+        z-index: 1010; // over toolbar overlay; hide all other icons
+
+        & img {
+            opacity: $active-opacity;
+        }
+    }
+
+    // disable selecting the text/icons in toolbar
+    & img {
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        -moz-user-select: none; // Firefox
+        -webkit-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-text-select: none;
+    }
+
+    &.settings-button-update-available {
+        &::after {
+            content: '';
+            position: absolute;
+            top: 7px;
+            right: -4px;
+            width: 8px;
+            height: 8px;
+            background-color: #d07070;
+            border-radius: 50%;
+            color: var(--pure-white);
+            font-size: 12px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 20px;
+        }
+    }
+
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none; // Firefox
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-text-select: none;
+}
+
+.settings-menu-option-update {
+    background-color: var(--download-color) !important;
+
+    &:hover {
+        background-color: var(--download-hover-color) !important;
+    }
+
+    & span {
+        color: #fff //var(--pure-white);
+                    // ^ nah cus we need it white here in dark mode too
+    }
+}
+
+// *** TOOLTIP STYLING ***
+// .ql-toolbar.ql-snow button, .toolbar-extra {
+//     &::before {
+//         background-color: var(--mid-grey);
+//         color: var(--pure-white);
+//         opacity: 0;
+//         padding: 5px 10px 4px 10px;
+//         font-family: 'Metropolis', sans-serif;
+
+//         position: absolute;
+//         top: 45px;
+//         transform: translateX(-50%);
+//         width: max-content;
+//         margin-left: 5px; // to center above center of button
+//                             // rather than centering above left edge
+
+//         transition: opacity $anim-dur-med $anim-curve;
+//         border-radius: 12px;
+//         font-size: 14px;
+//         text-decoration: none;
+//         font-weight: normal;
+//         font-style: normal;
+//         cursor: default;
+//         pointer-events: none;
+//         letter-spacing: .2px;
+//     }
+
+//     &:not(.settings-button-active):hover::before {
+//         transition: opacity $anim-dur-slow $anim-curve .3s; // slight delay looks better
+//         opacity: 1;
+//     }
+
+//     // tooltip contents
+//     &.ql-bold::before { content: 'Bold'; }
+//     &.ql-italic::before { content: 'Italic'; }
+//     &.ql-underline::before { content: 'Underline'; }
+//     &.ql-header[value='1']::before { content: 'Header'; }
+//     &.ql-header[value='2']::before { content: 'Subheader'; }
+//     &.ql-header[value='3']::before { content: 'Subsubheader'; }
+//     &.ql-list[value='ordered']::before { content: 'Numbered List'; }
+//     &.ql-list[value='bullet']::before { content: 'Bullet List'; }
+//     &.settings-button::before { content: 'Settings & About'; }
+//     &.gpt-button::before {content: 'AI Options';}
+//     &.file-button::before { content: 'File Menu'; }
+
+//     // &.gpt-check::before { content: 'AI: Fact Check'; }
+//     // &.gpt-explain::before {
+//     //     content: 'AI: Explain Concept';
+//     //     transform: translateX(calc(-50% - 33px)); // fit above toolbar
+//     //                                               // (defo a better way of
+//     //                                               //  doing this)
+//     // }
+//     // &.gpt-suggest::before {
+//     //     content: 'GPT: Toggle Suggestions';
+//     //     transform: translateX(calc(-50% - 57px));
+//     // }
+//     // &.gpt-chat::before { content: 'GPT: Ask Something'; }
+// }
+
+// .toolbar-extra {
+//     &:hover::before {
+//         opacity: $active-opacity; // match colour of toolbar btn tooltips
+//     }
+//     &.settings-button-active:hover::before {
+//         opacity: 0; // disable tooltip when settings menu open
+//     }
+// }
+
+// .toolbar-extra::before { // fix toolbar-extra alignment
+//     transform: translateX(calc(-50% + 4px)) !important;
+// }
+
+// .word-count {
+//     // not really part of toolbar but the toolbar focusmode applies to both
+// 	position: fixed;
+// 	bottom: 0;
+// 	right: 0;
+//     height: 12px;
+// 	font-size: 12px;
+// 	line-height: 14px;
+// 	padding: 6px 7px 7px 6px;
+// 	background: var(--editor-bg-color);
+// 	border-top-left-radius: 8px;
+// 	box-shadow: 1px 1px 5px var(--toolbar-shadow-color);
+// 	opacity: 1;
+// 	transition: all $anim-dur-med $anim-curve;
+// 	color: var(--light-grey);
+
+//     user-select: none;
+//     -moz-user-select: none;
+//     -webkit-user-select: none;
+//     -ms-user-select: none;
+// }
+
+.ql-toolbar.ql-snow, .toolbar-extra, .toolbar-bg {
+    transition: all $anim-dur-med $anim-curve;
+}
+
+body.toolbar-hidden {
+    & .ql-toolbar.ql-snow, & .toolbar-extra { //, & .toolbar-bg {
+        opacity: 0;
+        top: -22px;
+        pointer-events: none;
+    }
+
+    & .toolbar-bg {
+        top: -40px;
+    }
+}
+
+
+// .file-menu-banner, .gpt-menu-banner, .settings-menu-banner {
+//     position: relative;
+//     transform: translateX(-50%); // center under button
+// }
+
+// @media screen and (max-width: calc(#{$toolbar-width} + 40px)) {
+//     .file-menu-banner, .gpt-menu-banner, .feedback-menu-banner, .settings-menu-banner {
+//         transform: none;
+//     }
+
+//     .file-menu-banner { left: 10px; }
+//     .gpt-menu-banner { left: 10px; }
+//     .settings-menu-banner { left: 15px; }
+//     // .feedback-menu-banner { } // default works here anyway
+// }
+
+// SETTINGS MENUS
+.menus-container {
+    z-index: 980; // just under settings buttons
+    position: absolute;
+    top: 48px;
+    width: 100%;
+
+    pointer-events: none;
+
+    &.overlay-active { pointer-events: auto; }
+
+    &.settings-menu-open > .settings-menu-banner,
+    &.file-menu-open > .file-menu-banner,
+    &.gpt-menu-open > .gpt-menu-banner,
+    &.feedback-menu-open > .feedback-menu-banner {
+        pointer-events: auto;
+        opacity: 1;
+        transition: all $anim-dur-fast $anim-curve;
+    }
+    
+    & .menu-banner {
+        position: absolute;
+        white-space: nowrap;
+
+        transition: all $anim-dur-really-fast $anim-curve;
+        opacity: 0; // hidden by default, enabled above
+        pointer-events: none;
+        z-index: 1000;
+
+        background-color: var(--toolbar-bg-color);
+        box-shadow: 0 0 5px var(--toolbar-shadow-color);
+        border-radius: 8px;
+        
+        text-align: right;
+        overflow: hidden;
+
+        // disable selecting the text/icons in toolbar
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        -moz-user-select: none; // Firefox
+        -webkit-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-text-select: none;
+
+        & .menu-option {
+            position: relative;
+            left: 0;
+            right: 0;
+            letter-spacing: 0.2px;
+            font-family: 'Metropolis', sans-serif;
+            letter-spacing: .2px;
+            text-align: left;
+            font-size: 13px;
+            min-width: 70px;
+            // display: inline-block;
+            text-align: left;
+
+            & span + span {
+                margin-left: .1ch; // addition to space
+                opacity: .8;
+            }
+
+            margin: 0;
+            padding: 6px 10px;
+            line-height: 16px;
+
+            overflow: hidden;
+            align-items: center;
+            
+            cursor: pointer;
+
+            color: var(--mid-grey);
+
+            &:hover {
+                background: var(--settings-menu-border-color);
+            }
+
+            &.menu-option-enabled {
+                background: var(--blue-accent);
+                border: 1.5px solid var(--pure-black);
+                color: var(--pure-white);
+            }
+
+            & + .menu-option {
+                border-top: 1px solid var(--settings-menu-border-color);
+            }
+        }
+    }
+}

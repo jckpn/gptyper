@@ -1,0 +1,106 @@
+@import 'base';
+
+.ql-tooltip { display: none !important; }
+
+#editor.ql-container > div.ql-editor a {
+    text-decoration: none;
+    color: var(--pure-black);
+    font-style: italic;
+    cursor: pointer;
+    transition: none;
+
+    font-size: 95%;
+    text-shadow: 0 0 .2px var(--pure-black);
+
+    position: relative; // for slide-in anim
+    left: -50px;
+    opacity: 0;
+
+    &.suggestion-visible {
+        transition: opacity $anim-dur-med $anim-curve,
+                    left $anim-dur-med $anim-curve;
+        opacity: .3;
+        left: 0;
+
+        &:hover {
+            opacity: .5;
+        }
+
+        &::after {
+            content: 'Click or press Tab to accept suggestions';
+
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            font-style: normal;
+            font-size: 75%;
+            padding: 3px 8px 2px 8px;
+            font-family: 'Metropolis', sans-serif;
+            border-radius: 10px;
+
+            background-color: var(--pure-black);
+            color: var(--pure-white);
+            pointer-events: none;
+
+            opacity: 0;
+            animation: hint-fade-in 2s $anim-curve 2s forwards;
+
+            &:hover {
+                opacity: 0 !important;
+            }
+        }
+    }
+}
+
+@keyframes hint-fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+// loading dots animation for suggestions
+.gpt-loading-dots {
+    position: absolute;
+    top: 0; left: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 16px;
+    margin-left: 8px;
+    pointer-events: none; // otherwise blocks clicking suggestion
+
+    opacity: 0;
+    transition: opacity $anim-dur-fast $anim-curve;
+
+    &.gpt-loading-dots-visible {
+        opacity: 1; 
+        transition: opacity $anim-dur-slow $anim-curve;  // slowly fade in, don't want dots to
+                                            // distract if user thinking or slowly typing
+    }
+
+    & .loading-dot {
+        position: absolute;
+        width: 2.5px; height: 2.5px;
+        border-radius: 20%;
+        // background-color: $suggestion-color;
+        background-color: var(--pure-black);
+        opacity: .3;
+
+        &.loading-dot-1 {
+            left: 5%;
+            animation: loading-dot-bounce .8s infinite 0s;
+        }
+        &.loading-dot-2 {
+            left: 50%;
+            transform: translateX(-50%);
+            animation: loading-dot-bounce .8s infinite .2s;
+        }
+        &.loading-dot-3 {
+            right: 5%;
+            animation: loading-dot-bounce .8s infinite .4s;
+        }
+    }
+}
+
+@keyframes loading-dot-bounce {
+    0%, 60%, 100% { top: 1px; }
+    30% { top: -2px; }
+}

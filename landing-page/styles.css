@@ -1,0 +1,285 @@
+@font-face {
+    font-family: 'Hubot Sans';
+    src: url('assets/Hubot-Sans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background: #f4f3f2;
+    font-family: 'Hubot Sans';
+    overflow-x: hidden;
+}
+
+body * {
+    /* for resize animation */
+    transition: all .5s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+
+header {
+    z-index: 1000;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 72px;
+    background: #fdfdfd;
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    box-shadow: 0 0 15px rgba(0,0,0,.2);
+}
+
+footer {
+    z-index: 1000;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 56px;
+    line-height: 55px;
+    text-align: center;
+    color: #888;
+    font-size: 12px;
+}
+
+.header-logo {
+    position: absolute;
+    height: 72px;
+    width: 210px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    user-select: none;
+    cursor: pointer;
+}
+  
+.header-logo img {
+    position: absolute;
+    height: 50px;
+    top: 10px;
+}
+
+.header-logo div {
+    position: absolute;
+    font-size: 28px;
+    top: 15px;
+    left: 58px;
+    color: #444;
+    letter-spacing: -1px;
+}
+
+.header-logo div::after { /* BETA tag */
+    content: 'beta';
+    position: absolute;
+    font-size: 12px;
+    color: #aaa;
+    bottom: -8px;
+    left: 2px;
+    letter-spacing: .5px;
+}
+
+.content-container {
+    position: absolute;
+    top: 117px;
+    width: 890px;
+    left: 50%; transform: translateX(-50%);
+    /* height: 1700px; */
+    height: 700px;
+}
+
+.demo-ss-mini {
+    opacity: 0;
+}
+
+.macos-window-container {
+    position: absolute;
+    max-width: 500px;
+    left: 15px;
+}
+
+.macos-window {
+    width: 520px;
+    height: 500px;
+}
+
+.demo-video {
+    position: absolute;
+    top: 28px;
+    width: 520px;
+    left: 50%; transform: translateX(-50%);
+}
+
+video::-webkit-media-controls {
+    display: none;
+}
+
+.top-content {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 310px;
+    color: #333;
+}
+
+.content-headline {
+    font-size: 19px;
+}
+
+.content-description {
+    font-size: 17px;
+}
+
+/* .content-links { } */
+
+.download-link {
+    background-color: #0070d0;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    color: #fff;
+    font-size: 16px;
+    padding: 7px 16px 8px 16px;
+    margin-top: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-right: 1ch;
+    display: inline-block;
+}
+
+.github-link {
+    background-color: #666;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    color: #fff;
+    font-size: 16px;
+    padding: 7px 16px 8px 16px;
+    margin-top: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-right: 1ch;
+    display: inline-block;
+}
+
+.download-icon {
+    /* ignore padding of parent */
+    margin: 0 4px -4px -3px;
+    height: 18px;
+}
+
+.content-disclaimer {
+    font-size: 12px;
+    color: #666;
+    line-height: 16px;
+}
+
+.content-disclaimer p {
+    margin-top: -5px;
+}
+
+a {
+    color: #222;
+}
+
+/* .faq-content {
+    position: relative;
+    top: 580px;
+    left: 50%; transform: translateX(-50%);
+    padding-top: 30px;
+    border-top: 1px solid rgba(0,0,0,.1);
+} */
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+.privacy-content-container, .faq-content {
+    width: calc(100% - 100px);
+    max-width: 600px;
+}
+
+h1 {
+    margin-bottom: 1em;
+}
+
+h2, h3 {
+    margin-top: 26px;
+    margin-bottom: -8px;
+}
+
+h3 {
+    color: #444;
+}
+
+.privacy-content-container .privacy-policy-date {
+    font-size: 90%;
+    margin-top: 10px;
+    text-align: center;
+    color: #555;
+}
+
+.privacy-content-container p,
+.faq-content p {
+    color: #555;
+}
+
+@media (max-width: 1000px) {
+    .demo-video {
+        top: -40px;
+    }
+    
+    .macos-window-container {
+        width: calc(100vw - 60px);
+        left: 50%; transform: translateX(-50%);
+    }
+
+    .macos-window {
+        width: calc(100vw - 60px);
+        max-width: 520px;
+        height: 300px;
+        left: 50%; transform: translateX(-50%);
+    }
+
+    .macos-window .macos-window-titlebar {
+        display: none;
+    }
+
+    .content-container {
+        width: 100%;
+        /* height: 1950px; */
+        height: 700px;
+    }
+    
+    .macos-window-container {
+        width: 500px;
+        left: 50%; transform: translateX(-50%);
+    }
+    
+    .top-content {
+        position: absolute;
+        top: 340px;
+        width: calc(100% - 100px);
+        max-width: 550px;
+        left: 50%; transform: translateX(-50%);
+        text-align: center;
+        color: #333;
+    }
+
+    .faq-content {
+        top: 800px;
+    }
+}
+
+@media (max-width: 600px) {
+    .demo-video {
+        display: none;
+    }
+
+    .demo-ss-mini {
+        position: absolute;
+        opacity: 1;
+        left: 50%; transform: translateX(-50%);
+        width: 350px;
+        top: 10px;
+    }
+
+    .macos-window {
+        height: 56px;
+    }
+    
+    .top-content {
+        top: 110px;
+    }
+}

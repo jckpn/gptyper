@@ -1,0 +1,22 @@
+$editor-font-size: 18px;
+$editor-margin: 50px;
+$editor-background: #fffefd;
+$editor-font-color: #333;
+
+#editor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: $editor-margin;
+
+    background-color: $editor-background;
+
+	border: none;
+    
+    & > div.ql-editor {
+        font-size: $editor-font-size;
+        color: $editor-font-color;
+    }
+}

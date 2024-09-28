@@ -1,0 +1,191 @@
+:root {
+  --pure-white: #fff;
+  --editor-bg-color: #fffefd;
+  --font-color: #333;
+  --header-color: #111;
+  --pure-black: #000;
+  --mid-grey: #888;
+  --light-grey: #bbb;
+  --blue-accent: #30a0f0;
+  --image-border-color: #888;
+  --image-shadow-color: rgba(0,0,0,0.2);
+  --settings-menu-overlay-bg: rgba(128,128,128, 0.3);
+  --settings-menu-overlay-calculated: #D9D8D8;
+  --toolbar-bg-color: #fff;
+  --toolbar-border-color: #bbb;
+  --toolbar-shadow-color: rgba(0,0,0,0.2);
+  --settings-menu-border-color: #eee;
+  --bg-color: #eee;
+  --page-shadow-color: var(--toolbar-shadow-color);
+  --download-color: #e08080;
+  --download-hover-color: #c86868;
+}
+
+[data-theme=dark] {
+  --pure-white: #000;
+  --editor-bg-color: #222;
+  --font-color: #ddd;
+  --header-color: #eee;
+  --pure-black: #fff;
+  --mid-grey: #777;
+  --light-grey: #333;
+  --blue-accent: #30a0f0;
+  --image-border-color: #888;
+  --image-shadow-color: rgba(0,0,0,0.2);
+  --settings-menu-overlay-bg: rgba(0,0,0, 0.3);
+  --settings-menu-overlay-calculated: rgb(17,17,17);
+  --toolbar-bg-color: #333;
+  --toolbar-border-color: #333;
+  --toolbar-shadow-color: rgba(0,0,0,0.3);
+  --settings-menu-border-color: #202020;
+  --bg-color: var(--editor-bg-color);
+  --page-shadow-color: transparent;
+  --download-color: #e08080;
+  --download-hover-color: #c86868;
+}
+[data-theme=dark] img {
+  filter: invert(100%);
+}
+
+@font-face {
+  font-family: "Latin Modern Roman";
+  src: url("../../assets/fonts/lmroman10-regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Latin Modern Roman";
+  src: url("../../assets/fonts/lmroman10-bold.otf") format("opentype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Latin Modern Roman";
+  src: url("../../assets/fonts/lmroman10-italic.otf") format("opentype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Latin Modern Roman";
+  src: url("../../assets/fonts/lmroman10-bolditalic.otf") format("opentype");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Latin Modern Roman";
+  src: url("../../assets/fonts/lmroman10-regular.otf") format("opentype");
+}
+@font-face {
+  font-family: "Metropolis";
+  src: url("../../assets/fonts/Metropolis-Regular.otf") format("opentype");
+}
+html, body {
+  background-color: var(--editor-bg-color);
+  transition: background-color 1200ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Metropolis", sans-serif;
+  overflow: hidden;
+}
+
+.ql-tooltip {
+  display: none !important;
+}
+
+#editor.ql-container > div.ql-editor a {
+  text-decoration: none;
+  color: var(--pure-black);
+  font-style: italic;
+  cursor: pointer;
+  transition: none;
+  font-size: 95%;
+  text-shadow: 0 0 0.2px var(--pure-black);
+  position: relative;
+  left: -50px;
+  opacity: 0;
+}
+#editor.ql-container > div.ql-editor a.suggestion-visible {
+  transition: opacity 600ms cubic-bezier(0.19, 1, 0.22, 1), left 600ms cubic-bezier(0.19, 1, 0.22, 1);
+  opacity: 0.3;
+  left: 0;
+}
+#editor.ql-container > div.ql-editor a.suggestion-visible:hover {
+  opacity: 0.5;
+}
+#editor.ql-container > div.ql-editor a.suggestion-visible::after {
+  content: "Click or press Tab to accept suggestions";
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  font-style: normal;
+  font-size: 75%;
+  padding: 3px 8px 2px 8px;
+  font-family: "Metropolis", sans-serif;
+  border-radius: 10px;
+  background-color: var(--pure-black);
+  color: var(--pure-white);
+  pointer-events: none;
+  opacity: 0;
+  animation: hint-fade-in 2s cubic-bezier(0.19, 1, 0.22, 1) 2s forwards;
+}
+#editor.ql-container > div.ql-editor a.suggestion-visible::after:hover {
+  opacity: 0 !important;
+}
+
+@keyframes hint-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.gpt-loading-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 16px;
+  margin-left: 8px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.gpt-loading-dots.gpt-loading-dots-visible {
+  opacity: 1;
+  transition: opacity 1200ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.gpt-loading-dots .loading-dot {
+  position: absolute;
+  width: 2.5px;
+  height: 2.5px;
+  border-radius: 20%;
+  background-color: var(--pure-black);
+  opacity: 0.3;
+}
+.gpt-loading-dots .loading-dot.loading-dot-1 {
+  left: 5%;
+  animation: loading-dot-bounce 0.8s infinite 0s;
+}
+.gpt-loading-dots .loading-dot.loading-dot-2 {
+  left: 50%;
+  transform: translateX(-50%);
+  animation: loading-dot-bounce 0.8s infinite 0.2s;
+}
+.gpt-loading-dots .loading-dot.loading-dot-3 {
+  right: 5%;
+  animation: loading-dot-bounce 0.8s infinite 0.4s;
+}
+
+@keyframes loading-dot-bounce {
+  0%, 60%, 100% {
+    top: 1px;
+  }
+  30% {
+    top: -2px;
+  }
+}/*# sourceMappingURL=gpt-suggestion.css.map */

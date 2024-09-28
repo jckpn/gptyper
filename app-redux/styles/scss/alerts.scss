@@ -1,0 +1,15 @@
+@import 'utils';
+
+$alert-font-size: 18px;
+$alert-border: 1px solid rgba(#000, 0.15);
+$alert-border-radius: 12px;
+$alert-background: #fff;
+
+.alert {
+    background-color: $alert-background;
+
+    border: $alert-border;
+    border-radius: $alert-border-radius;
+
+    box-shadow: $shadow-deep;
+}
