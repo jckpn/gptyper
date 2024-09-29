@@ -267,7 +267,7 @@ $('.gpt-menu-option-apikey').on('click', async () => {
     closeMenuBanner();
     let currentKey = window.localStorage.getItem('apiKey') || '';
     let newKey = await prompt('Enter your API key:', currentKey);
-    if (newKey) {
+    if (newKey !== null && newKey !== currentKey) {
         window.localStorage.setItem('apiKey', newKey);
         alert('API key set! You may need to refresh the page for changes to take effect.');
     }
