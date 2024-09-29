@@ -251,7 +251,7 @@ async function runSuggestionGPT(prompt, apiKey) {
                 "content": [
                     {
                         "type": "text",
-                        "text": "You complete the user's sentences. Do not engage in conversation."
+                        "text": "You are autocomplete. No conversations."
                     }
                 ]
             },
@@ -269,7 +269,7 @@ async function runSuggestionGPT(prompt, apiKey) {
                 "content": [
                     {
                         "type": "text",
-                        "text": "chips"
+                        "text": "chips."
                     }
                 ]
             },
