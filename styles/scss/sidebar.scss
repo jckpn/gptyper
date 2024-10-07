@@ -1,0 +1,84 @@
+@import 'variables';
+
+
+$option-divider-border: 1px solid rgba(#000, 0.1);
+
+.sidebar-container {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    display: flex;
+
+    // place inner div in center-bottom
+    justify-content: center;
+    align-items: flex-end;
+
+    .sidebar {
+        position: relative;
+        margin: $margin-large; // distance from corner
+        width: $sidebar-width;
+        border: $option-divider-border;
+        border-radius: $border-radius-medium;
+        box-shadow: $shadow-subtle;
+
+        font-family: 'Roboto', sans-serif;
+
+        >* {
+            padding: $margin-small $margin-medium;
+            border-bottom: $option-divider-border;
+        }
+
+        .sidebar-header {
+            font-size: 1.1em;
+        }
+
+        .sidebar-exit-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: $margin-small $margin-medium;
+        }
+
+        .sidebar-option {
+            position: relative;
+
+            .sidebar-option-title {
+                display: inline;
+                font-size: 1em;
+            }
+
+            .sidebar-option-help {
+                position: relative;
+                display: inline-block;
+                background-color: #ccc;
+                color: rgba(#000, 0.5);
+                width: 1.25em;
+                height: 1.25em;
+                text-align: center;
+                vertical-align: middle;
+                font-size: 0.8em;
+                line-height: 1.25em;
+                border-radius: 50%;
+                cursor: pointer;
+                margin-left: .4ch;
+                margin-bottom: 2px;
+            }
+
+            .sidebar-option-description {
+                font-size: 0.8em;
+                color: rgba(#000, 0.5);
+            }
+
+            .sidebar-option-value {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin: $margin-small $margin-medium;
+
+                font-size: 0.9em;
+                border: $option-divider-border;
+                padding: 2px;
+            }
+        }
+    }
+}

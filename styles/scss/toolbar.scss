@@ -1,0 +1,24 @@
+@import 'variables';
+
+
+.toolbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $toolbar-height;
+    z-index: 10;
+
+
+    > #quill-toolbar {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        border: $border-subtle;
+        border-top: none;
+        border-radius: 0 0 $border-radius-large $border-radius-large;
+        box-shadow: $shadow-subtle;
+        padding: $margin-small calc($margin-small + 6px);
+        padding-top: calc($margin-small - 1px); // -1px to vertically align
+    }
+}

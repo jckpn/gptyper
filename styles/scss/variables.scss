@@ -1,0 +1,23 @@
+// put any variables here that are shared across stylesheets
+
+
+$shadow-subtle: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+$shadow-deep: 0 0 12px 0 rgba(0, 0, 0, 0.4);
+$sidebar-width: 300px;
+$margin-large: 50px;
+$margin-medium: 30px;
+$margin-small: 10px;
+$border-subtle: 1px solid rgba(0, 0, 0, 0.1);
+$border-radius-small: 2px;
+$border-radius-medium: 8px;
+$border-radius-large: 16px;
+$editor-font-size: 18px;
+$editor-background: #fffefd;
+$editor-font-color: #333;
+$editor-suggestion-color: #90a0b0;
+$toolbar-height: 40px;
+$editor-width: 760px;
+
+html {
+    font-size: 15px; // set 1rem
+}

@@ -1,0 +1,23 @@
+html {
+  font-size: 15px;
+}
+
+.toolbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  z-index: 10;
+}
+.toolbar-container > #quill-toolbar {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+  padding: 10px 16px;
+  padding-top: 9px;
+}/*# sourceMappingURL=toolbar.css.map */

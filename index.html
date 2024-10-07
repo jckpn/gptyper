@@ -3,72 +3,82 @@
 
 <head>
 	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="assets/logo.png">
-	<title>GPTyper – AI-Assisted Note Taking</title>
-	<link rel="stylesheet" href="styles.css">
-	<link rel="stylesheet" href="macoswindow.css">
+	<title>GPTyper</title>
+
+	<!-- load default quill styles -->
+	<link rel="stylesheet" href="lib/quill/quill.snow.css">
+
+	<link rel="stylesheet" href="styles/css/editor.css">
+	<link rel="stylesheet" href="styles/css/sidebar.css">
+	<link rel="stylesheet" href="styles/css/suggestions.css">
+	<link rel="stylesheet" href="styles/css/toolbar.css">
 </head>
 
 <body>
-    <header>
-        <a class="header-logo">
-            <img src="assets/logo.png" alt="GPTyper Logo" />
-            <div>GPTyper</div>
-        </a>
-    </header>
+	<!-- quill adds functionality to these, see startup.js -->
+	<div id="quill-editor"></div>
 
-    <div class="content-container">
-        <div class="macos-window-container">
-            <div class="macos-window">
-                <div class="macos-window-titlebar">
-                    <div class="macos-window-title">GPTyper — Untitled Note</div>
-                    <div class="macos-window-buttons">
-                        <div class="macos-window-close"></div>
-                        <div class="macos-window-minimize"></div>
-                        <div class="macos-window-zoom"></div>
-                    </div>
-                </div>
-
-                <video class="demo-video" disablePictureInPicture autoplay muted loop>
-                    <source src="assets/demo-vid.mp4" type="video/mp4">
-                </video>
-
-                <img class="demo-ss-mini" src="assets/demo-ss-mini.png" />
-
-                <!--  show example notes for language learning, would be cool -->
-            </div>
-        </div>
-
-        <div class="top-content">
-            <div class="content-headline">
-                Be more productive with hyper-predictive note taking.
-            </div>
-            <br>
-            <div class="content-description">
-                A minimalist note taking app that uses
-                language models to help you write essays, lecture notes, stories,
-                poetry, project plans, daily journals, and more.
-            </div>
-            <br>
-            <div class="content-links">
-                <a href="/app" class="download-link">
-                    <img class="download-icon" src="assets/download-icon.svg" />
-                    Use with OpenAI API Key</a>
-                    <a href="https://github.com/jckpn/gptyper" class="github-link">
-                        <img class="download-icon" src="assets/download-icon.svg" />
-                        View on GitHub</a>
-            </div>
-        </div>
+	<div class="suggestion-dots-container">
+		<div class="suggestion-dot">.</div>
+		<div class="suggestion-dot">.</div>
+		<div class="suggestion-dot">.</div>
 	</div>
-    
+	
+	<div class="toolbar-container">
+		<div id="quill-toolbar">
+			<span class="ql-formats">
+				<button class="ql-bold"></button>
+				<button class="ql-italic"></button>
+				<button class="ql-underline"></button>
+			</span>
+			<span class="ql-formats">
+				<button class="ql-align"></button>
+				<button class="ql-align" value="center"></button>
+			</span>
+			<span class="ql-formats">
+				<button class="ql-list" value="ordered"></button>
+				<button class="ql-list" value="bullet"></button>
+			</span>
+			<span class="ql-formats">
+				<button class="gpt-button">GPT</button>
+			</span>
+		</div>
+	</div>
 
-    <footer>
-        <div class="footer-text">© <a href="https://jckpn.com">Jack Paine</a>, 2024</div>
-    </footer>
+	<!-- <div class="sidebar-container">
+		<div class="sidebar">
+			<div class="sidebar-header">Auto-complete Options
+				<div class="sidebar-exit-button">
+					x
+				</div>
+			</div>
+			<div class="sidebar-option">
+				<div class="sidebar-option-title">Model</div>
+				<div class="sidebar-option-help">?</div>
+				<div class="sidebar-option-description">Get AI suggestions for your text</div>
+				<div class="sidebar-option-value">gpt-4o-mini</div>
+			</div>
+			<div class="sidebar-option">
+				<div class="sidebar-option-title">Temperature</div>
+				<div class="sidebar-option-help">?</div>
+				<div class="sidebar-option-description">Get AI suggestions for your text</div>
+				<div class="sidebar-option-value">1.0</div>
+			</div>
+			<div class="sidebar-option">
+				<div class="sidebar-option-title">AI Suggestions</div>
+				<div class="sidebar-option-help">?</div>
+				<div class="sidebar-option-description">Get AI suggestions for your text</div>
+			</div>
+		</div>
+	</div> -->
 
-    <script src="scripts/jquery-3.7.0.min.js"></script>
-	<script src="scripts/main.js"></script>
+	<!-- import lib scripts -->
+	<script src="lib/jquery/jquery-3.7.1.min.js"></script>
+	<script src="lib/quill/quill.js"></script>
+
+	<script src="scripts/startup.js"></script>
+	<script src="scripts/autosave.js"></script>
+	<script type="module" src="scripts/suggestions.js"></script>
 </body>
 
 </html>

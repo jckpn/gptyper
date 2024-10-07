@@ -1,0 +1,70 @@
+html {
+  font-size: 15px;
+}
+
+.sidebar-container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.sidebar-container .sidebar {
+  position: relative;
+  margin: 50px;
+  width: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+  font-family: "Roboto", sans-serif;
+}
+.sidebar-container .sidebar > * {
+  padding: 10px 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.sidebar-container .sidebar .sidebar-header {
+  font-size: 1.1em;
+}
+.sidebar-container .sidebar .sidebar-exit-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px 30px;
+}
+.sidebar-container .sidebar .sidebar-option {
+  position: relative;
+}
+.sidebar-container .sidebar .sidebar-option .sidebar-option-title {
+  display: inline;
+  font-size: 1em;
+}
+.sidebar-container .sidebar .sidebar-option .sidebar-option-help {
+  position: relative;
+  display: inline-block;
+  background-color: #ccc;
+  color: rgba(0, 0, 0, 0.5);
+  width: 1.25em;
+  height: 1.25em;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.8em;
+  line-height: 1.25em;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 0.4ch;
+  margin-bottom: 2px;
+}
+.sidebar-container .sidebar .sidebar-option .sidebar-option-description {
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.5);
+}
+.sidebar-container .sidebar .sidebar-option .sidebar-option-value {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px 30px;
+  font-size: 0.9em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 2px;
+}/*# sourceMappingURL=sidebar.css.map */

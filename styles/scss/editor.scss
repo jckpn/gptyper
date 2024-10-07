@@ -1,0 +1,27 @@
+@import 'variables';
+
+
+body {
+    background-color: $editor-background;
+
+    #quill-editor {
+        position: fixed;
+        top: calc($toolbar-height + $margin-medium);
+        left: 50%;
+        transform: translateX(-50%);
+        width: $editor-width;
+        max-width: 100%;
+        height: 100%;
+        padding: $margin-medium;
+
+        background-color: $editor-background;
+
+        border: none; // remove default quill border
+        box-shadow: $shadow-subtle;
+
+        &>div.ql-editor {
+            font-size: $editor-font-size;
+            color: $editor-font-color;
+        }
+    }
+}
