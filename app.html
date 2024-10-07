@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>GPTyper</title>
+
+	<!-- load default quill styles -->
+	<link rel="stylesheet" href="lib/quill/quill.snow.css">
+
+	<link rel="stylesheet" href="styles/css/editor.css">
+	<link rel="stylesheet" href="styles/css/sidebar.css">
+	<link rel="stylesheet" href="styles/css/suggestions.css">
+	<link rel="stylesheet" href="styles/css/toolbar.css">
+</head>
+
+<body>
+	<!-- quill adds functionality to these, see startup.js -->
+	<div id="quill-editor"></div>
+
+	<div class="suggestion-dots-container">
+		<div class="suggestion-dot">.</div>
+		<div class="suggestion-dot">.</div>
+		<div class="suggestion-dot">.</div>
+	</div>
+	
+	<div class="toolbar-container">
+		<div id="quill-toolbar">
+			<span class="ql-formats">
+				<button class="ql-bold"></button>
+				<button class="ql-italic"></button>
+				<button class="ql-underline"></button>
+			</span>
+			<span class="ql-formats">
+				<button class="ql-align"></button>
+				<button class="ql-align" value="center"></button>
+			</span>
+			<span class="ql-formats">
+				<button class="ql-list" value="ordered"></button>
+				<button class="ql-list" value="bullet"></button>
+			</span>
+			<span class="ql-formats">
+				<button class="gpt-button">GPT</button>
+			</span>
+		</div>
+	</div>
+
+	<!-- <div class="sidebar-container">
+		<div class="sidebar">
+			<div class="sidebar-header">Auto-complete Options
+				<div class="sidebar-exit-button">
+					x
+				</div>
+			</div>
+			<div class="sidebar-option">
+				<div class="sidebar-option-title">Model</div>
+				<div class="sidebar-option-help">?</div>
+				<div class="sidebar-option-description">Get AI suggestions for your text</div>
+				<div class="sidebar-option-value">gpt-4o-mini</div>
+			</div>
+			<div class="sidebar-option">
+				<div class="sidebar-option-title">Temperature</div>
+				<div class="sidebar-option-help">?</div>
+				<div class="sidebar-option-description">Get AI suggestions for your text</div>
+				<div class="sidebar-option-value">1.0</div>
+			</div>
+			<div class="sidebar-option">
+				<div class="sidebar-option-title">AI Suggestions</div>
+				<div class="sidebar-option-help">?</div>
+				<div class="sidebar-option-description">Get AI suggestions for your text</div>
+			</div>
+		</div>
+	</div> -->
+
+	<!-- import lib scripts -->
+	<script src="lib/jquery/jquery-3.7.1.min.js"></script>
+	<script src="lib/quill/quill.js"></script>
+
+	<script src="scripts/startup.js"></script>
+	<script src="scripts/autosave.js"></script>
+	<script type="module" src="scripts/suggestions.js"></script>
+</body>
+
+</html>
